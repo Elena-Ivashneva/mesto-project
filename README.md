@@ -9,4 +9,4 @@
 * Используются формы в модальных окнах.
 * Реализовано переполнение блоков содержимым.
 
-[Ссылка на проектную работу на GitHub Pages](https://elena-ivashneva.github.io/russian-travel/)
+[Ссылка на проектную работу на GitHub Pages](https://elena-ivashneva.github.io/mesto-project/)
