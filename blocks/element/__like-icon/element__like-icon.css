@@ -1,0 +1,10 @@
+.element__like-icon {
+  width: 22px;
+  margin-right: 21px;
+  cursor: pointer;
+  transition: opacity .1s linear;
+}
+
+.element__like-icon:hover {
+  opacity: .5;
+}
