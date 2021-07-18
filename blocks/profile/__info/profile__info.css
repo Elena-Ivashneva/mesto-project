@@ -11,12 +11,12 @@
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 659px) {
   .profile__info {
     grid-template-columns: fit-content(85%) max-content;
     gap: 8px 10px;
     justify-content: center;
-    margin: 0 0 36px 28px;
+    margin: 0 0 33px 28px;
   }
 }
 
