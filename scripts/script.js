@@ -17,9 +17,9 @@ const formProfile = popupEdit.querySelector('.form');
 const userNameInput = formProfile.querySelector('#user-name');
 const userJobInput = formProfile.querySelector('#user-job');
 
-const formCards = popupAdd.querySelector('.form');
-const placeNameInput = formCards.querySelector('#place-name');
-const placeImgInput = formCards.querySelector('#place-img');
+const formCard = popupAdd.querySelector('.form');
+const placeNameInput = formCard.querySelector('#place-name');
+const placeImgInput = formCard.querySelector('#place-img');
 
 // Профиль
 
@@ -33,64 +33,34 @@ const cardTemplate = document.querySelector('.card-template').content;
 
 // Открытая картинка
 
-const elImage = popupImage.querySelector('.opened-image__image');
-const elCaption = popupImage.querySelector('.opened-image__caption');
-
-
-// Карточки из коробки
-
-const initialCards = [
-  {
-    name: 'Карачаево-Черкессия',
-    link: './images/element-karachaevsk.jpg'
-  },
-  {
-    name: 'Алтай',
-    link: './images/element-altai.jpg'
-  },
-  {
-    name: 'Кабардино-Балкария',
-    link: './images/element-kabardino-balkaria.jpg'
-  },
-  {
-    name: 'Крым',
-    link: './images/element-crimea.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: './images/element-baikal.jpg'
-  },
-  {
-    name: 'Смоленск',
-    link: './images/element-smolensk.jpg'
-  }
-];
+const imageElement = popupImage.querySelector('.opened-image__image');
+const imageCaption = popupImage.querySelector('.opened-image__caption');
 
 
 // Открытие и закрытие модальных окон
 
-function popupOpen(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_animated');
   popup.classList.add('popup_opened');
 }
 
-function popupClose(popup) {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
 
 // Открытие и закрытие модального окна с картинкой
 
-function popupImageOpen(popupImageData) {
-  popupOpen(popupImage);
+function handlePreviewImage(popupImageData) {
+  openPopup(popupImage);
 
-  elImage.src = popupImageData.link;
-  elImage.alt = popupImageData.name;
-  elCaption.textContent = popupImageData.name;
+  imageElement.src = popupImageData.link;
+  imageElement.alt = popupImageData.name;
+  imageCaption.textContent = popupImageData.name;
 }
 
 popupImageClose.addEventListener('click', () => {
-  popupClose(popupImage);
+  closePopup(popupImage);
 });
 
 
@@ -112,17 +82,18 @@ function createCard(cardData) {
   });
 
   trashButton.addEventListener('click', evt => {
-    const card = evt.target.closest('.element');
-    card.remove();
+    evt.target.closest('.element').remove();
   });
 
   elementImage.addEventListener('click', evt => {
     const targetImage = evt.target;
 
-    popupImageOpen({
+    const cardData = {
       name: targetImage.alt,
       link: targetImage.src
-    });
+    };
+
+    handlePreviewImage(cardData);
   });
 
   return cardElement;
@@ -149,46 +120,43 @@ initialCards.forEach(item => {
 // Модальное окно редактирования профиля
 
 editButton.addEventListener('click', () => {
-  popupOpen(popupEdit);
+  openPopup(popupEdit);
 
   userNameInput.value = profileTitle.textContent;
   userJobInput.value = profileSubtitle.textContent;
 });
 
 popupEditClose.addEventListener('click', () => {
-  popupClose(popupEdit);
+  closePopup(popupEdit);
 });
 
 // Отправка формы редактирования профиля
 
-function editProfile(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   profileTitle.textContent = userNameInput.value;
   profileSubtitle.textContent = userJobInput.value;
 
-  popupClose(popupEdit);
+  closePopup(popupEdit);
 }
 
-formProfile.addEventListener('submit', editProfile);
+formProfile.addEventListener('submit', handleProfileFormSubmit);
 
 
 // Модальное окно добавления карточки
 
 addButton.addEventListener('click', () => {
-  popupOpen(popupAdd);
-
-  placeNameInput.value = '';
-  placeImgInput.value = '';
+  openPopup(popupAdd);
 });
 
 popupAddClose.addEventListener('click', () => {
-  popupClose(popupAdd);
+  closePopup(popupAdd);
 });
 
 // Отправка формы добавления карточки
 
-formCards.addEventListener('submit', evt => {
+function handleCardFormSubmit(evt) {
   evt.preventDefault();
 
   addCard({
@@ -196,8 +164,12 @@ formCards.addEventListener('submit', evt => {
     link: placeImgInput.value
   }, cardsList, true);
 
-  popupClose(popupAdd);
-});
+  closePopup(popupAdd);
+
+  formCard.reset();
+}
+
+formCard.addEventListener('submit', handleCardFormSubmit);
 
 
 // console.log();
