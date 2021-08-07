@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <meta name="description" content="Вторая проектная работа второго спринта. Адаптивная верстка по макету. Верстка форм.">
-  <meta name="keywords" content="HTML, CSS, Flexbox, Grid Layout, медиа-запросы, формы">
+  <meta name="description" content="Вторая проектная работа второго спринта. Адаптивная верстка по макету. Верстка форм.
+    Проектная работа третьего спринта. Реализация функциональности проекта на JavaScript.">
+  <meta name="keywords" content="HTML, CSS, Flexbox, Grid Layout, медиа-запросы, формы, JavaScript">
   <meta name="author" content="Елена Ивашнева">
   <link rel="stylesheet" href="./pages/index.css">
 </head>
@@ -27,41 +28,11 @@
           <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button class="profile__add-button" type="button" aria-label="Добавить новое место"></button>
       </section>
 
-      <section class="page__section">
+      <section class="places page__section" aria-label="Интересные места России">
         <ul class="elements page__reset-list">
-          <li class="element">
-            <img class="element__image" src="./images/element-karachaevsk.jpg" alt="Карачаево-Черкессия">
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__like-icon" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-altai.jpg" alt="Алтай">
-            <h2 class="element__title">Алтай</h2>
-            <button class="element__like-icon" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-kabardino-balkaria.jpg" alt="Кабардино-Балкария">
-            <h2 class="element__title">Кабардино-Балкария</h2>
-            <button class="element__like-icon" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-crimea.jpg" alt="Крым">
-            <h2 class="element__title">Крым</h2>
-            <button class="element__like-icon element__like-icon_active" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-baikal.jpg" alt="Байкал">
-            <h2 class="element__title">Байкал</h2>
-            <button class="element__like-icon" type="button" aria-label="Нравится"></button>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/element-smolensk.jpg" alt="Смоленск">
-            <h2 class="element__title">Смоленск</h2>
-            <button class="element__like-icon" type="button" aria-label="Нравится"></button>
-          </li>
         </ul>
       </section>
 
@@ -73,13 +44,13 @@
 
   </div>
 
-  <div class="popup">
+  <div class="popup popup_type_edit">
     <div class="popup__container">
-      <form class="form" action="#" name="profile-user">
+      <form class="form" action="#" name="user-profile">
         <h2 class="form__title">Редактировать профиль</h2>
         <fieldset class="form__fieldset">
-          <input class="form__field" type="text" name="name-user" value="Жак-Ив Кусто" placeholder="Имя">
-          <input class="form__field" type="text" name="about-user" value="Исследователь океана" placeholder="О себе">
+          <input class="form__field" type="text" id="user-name" name="user-name" placeholder="Имя" required>
+          <input class="form__field" type="text" id="user-job" name="user-job" placeholder="О себе">
         </fieldset>
         <button class="form__submit-button" type="submit">Сохранить</button>
       </form>
@@ -87,6 +58,40 @@
     </div>
   </div>
 
+  <div class="popup popup_type_add">
+    <div class="popup__container">
+      <form class="form" action="#" name="new-place">
+        <h2 class="form__title">Новое место</h2>
+        <fieldset class="form__fieldset">
+          <input class="form__field" type="text" id="place-name" name="place-name" placeholder="Название" required>
+          <input class="form__field" type="text" id="place-img" name="place-img" placeholder="Ссылка на картинку" required>
+        </fieldset>
+        <button class="form__submit-button" type="submit">Создать</button>
+      </form>
+      <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_image">
+    <div class="popup__container popup__container_type_image">
+     <figure class="opened-image">
+        <img class="opened-image__image" src="#" alt="">
+        <figcaption class="opened-image__caption"></figcaption>
+      </figure>
+      <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <template class="card-template">
+    <li class="element">
+      <img class="element__image" src="" alt="">
+      <h2 class="element__title"></h2>
+      <button class="element__like-icon" type="button" aria-label="Мне нравится"></button>
+      <button class="element__trash-icon" type="button" aria-label="Удалить место"></button>
+    </li>
+  </template>
+
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 .profile__info {
   display: grid;
-  grid-template-columns: fit-content(75%) 1fr;
+  grid-template-columns: fit-content(80%) 1fr;
   gap: 8px 18px;
   align-items: end;
 }

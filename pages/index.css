@@ -36,6 +36,7 @@
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__like-icon/element__like-icon.css);
 @import url(../blocks/element/__like-icon/_active/element__like-icon_active.css);
+@import url(../blocks/element/__trash-icon/element__trash-icon.css);
 
 
 /* Подвал сайта */
@@ -47,8 +48,11 @@
 /* Попап */
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_type/popup_type_image.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_animated/popup_animated.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/_type/popup__container_type_image.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 
 @import url(../blocks/form/form.css);
@@ -56,3 +60,7 @@
 @import url(../blocks/form/__fieldset/form__fieldset.css);
 @import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__submit-button/form__submit-button.css);
+
+@import url(../blocks/opened-image/opened-image.css);
+@import url(../blocks/opened-image/__image/opened-image__image.css);
+@import url(../blocks/opened-image/__caption/opened-image__caption.css);
